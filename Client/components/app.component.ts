@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    console.log('asdaaf');
+    console.log('aaa');
     this.dataService.get('api/content?lang=en')
       .subscribe(x => console.log(x));
   }

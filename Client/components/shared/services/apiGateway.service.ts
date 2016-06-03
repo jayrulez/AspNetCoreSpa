@@ -17,7 +17,9 @@ import { HttpErrorHandler } from './httpErrorHandler';
 // Import the rxjs operators we need (in a production app you'll
 //  probably want to import only the operators you actually use)
 //
-import 'rxjs/Rx';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/finally';
 
 export class ApiGatewayOptions {
     method: RequestMethod;

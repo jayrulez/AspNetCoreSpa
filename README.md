@@ -42,3 +42,7 @@
     * rm tsd.json
     * typings install
     * Add typings/main and typings/main.d.ts in tsconfig.json's exclude section to avoid duplicate identifiers during compilation
+    
+### 3. Webpack stats analyser
+    * webpack --config config/webpack.config.js --profile --json > stats.json
+    * then feed stats.json file into "https://webpack.github.io/analyse/"
