@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "es5",
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipDefaultLibCheck": true
+  },
+  "exclude": [
+    "./node_modules"
+  ],
+  "filesGlob": [
+    "./client/components/**/*.ts",
+    "./client/platform/**/*.ts",
+    "!./node_modules/**",
+    "./client/custom-typings.d.ts",
+    "./typings/index.d.ts"
+  ],
+  "compileOnSave": false
+}
