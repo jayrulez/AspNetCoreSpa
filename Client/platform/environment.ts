@@ -5,19 +5,20 @@ import { enableProdMode } from '@angular/core';
 // Environment Providers
 let PROVIDERS = [];
 
-// if ('production' === ENV) {
+if (process.env.ENV !== 'Development') {
   // Production
-//   enableProdMode();
+  enableProdMode();
+}
 
 //   PROVIDERS = [
 //     ...PROVIDERS
 //   ];
 
 // } else {
-  // Development
-  PROVIDERS = [
-    ...PROVIDERS
-  ];
+// Development
+PROVIDERS = [
+  ...PROVIDERS
+];
 
 // }
 
