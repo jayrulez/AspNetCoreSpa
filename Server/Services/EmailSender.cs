@@ -35,38 +35,36 @@ namespace AspNetCoreSpa.Server.Services
             emailModel.HtmlBody = extraData;
             emailModel.TextBody = extraData;
             return await Task.Run(() => true);
-            //return await SendEmailAsync(emailModel);
+            // return await SendEmailAsync(emailModel);
         }
 
-        //     private bool SendEmailAsync(EmailModel model)
+        // private bool SendEmailAsync(EmailModel model)
+        // {
+        //     try
         //     {
-        //         try
+        //         var email = new SendGridMessage
         //         {
-        //             //    var email = new SendGridMessage
-        //             //    {
-        //             //        From = new MailAddress(model.From),
-        //             //        Subject = model.Subject,
-        //             //        To = new[] { new MailAddress(model.To) },
-        //             //        Html = model.HtmlBody,
-        //             //        Text = model.TextBody
-        //             //    };
+        //             From = new MailAddress(model.From),
+        //             Subject = model.Subject,
+        //             To = new[] { new MailAddress(model.To) },
+        //             Html = model.HtmlBody,
+        //             Text = model.TextBody
+        //         };
 
-        //             //    // Create a Web transport, using API Key
-        //             //    var transportWeb = new Web(Startup.Configuration["Sendgrid:api_key"]);
+        //         // Create a Web transport, using API Key
+        //         var transportWeb = new Web(Startup.Configuration["Sendgrid:api_key"]);
 
-        //             //    // Send the email.
-        //             //    await transportWeb.DeliverAsync(email);
-        //             return true;
-        //         }
-        //         catch (Exception ex)
-        //         {
-        //             _loggingRepository.Add(new Error() { Message = ex.Message, StackTrace = ex.StackTrace, DateCreated = DateTime.Now });
-        //             _loggingRepository.Commit();
-        //             return false;
-        //         }
+        //         // Send the email.
+        //         await transportWeb.DeliverAsync(email);
+        //         return true;
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         _loggingRepository.Add(new Error() { Message = ex.Message, StackTrace = ex.StackTrace, DateCreated = DateTime.Now });
+        //         _loggingRepository.Commit();
+        //         return false;
         //     }
         // }
-
-
     }
+
 }
