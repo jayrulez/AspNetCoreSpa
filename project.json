@@ -21,6 +21,8 @@
       "version": "1.0.0-preview1-final",
       "type": "build"
     },
+    "Swashbuckle.SwaggerGen": "6.0.0-beta9",
+    "Swashbuckle.SwaggerUi": "6.0.0-beta9",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.StaticFiles": "1.0.0-rc2-final",
@@ -104,9 +106,7 @@
     ]
   },
   "scripts": {
-    "prepublish": [
-      "npm install"
-    ],
+    "prepublish": [],
     "postpublish": [
       "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%"
     ]

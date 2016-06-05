@@ -8,7 +8,7 @@ namespace AspNetCoreSpa.Server.Controllers.api
 {
     [Route("api/[controller]")]
     [AllowAnonymous]
-    public class ContentController : Controller
+    public class ContentController : BaseController
     {
         private readonly ApplicationDbContext _context;
 

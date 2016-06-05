@@ -16,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using Swashbuckle.SwaggerGen.Generator;
 
 namespace AspNetCoreSpa
 {
@@ -26,8 +27,11 @@ namespace AspNetCoreSpa
         //2) Configure services
         //3) Configure
 
+        private IHostingEnvironment _hostingEnv;
         public Startup(IHostingEnvironment env)
         {
+            _hostingEnv = env;
+
             var builder = new ConfigurationBuilder()
                            .SetBasePath(env.ContentRootPath)
                            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -72,23 +76,7 @@ namespace AspNetCoreSpa
                     options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 });
 
-            // TODO: Install Swagger when compatable package available form .net core rc2
-            //services.AddSwaggerGen();
-            //services.ConfigureSwaggerDocument(options =>
-            //{
-            //    options.SingleApiVersion(new Info
-            //    {
-            //        Version = "v1",
-            //        Title = "Ng2App",
-            //        Description = "Simple AspNet Core and Angular2 website",
-            //        TermsOfService = "None"
-            //    });
-
-            //});
-            //services.ConfigureSwaggerSchema(options =>
-            //{
-            //    options.DescribeAllEnumsAsStrings = true;
-            //});
+            services.AddSwaggerGen();
         }
 
 
@@ -97,7 +85,7 @@ namespace AspNetCoreSpa
         {
             if (env.IsDevelopment())
             {
-                //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+                loggerFactory.AddConsole(Configuration.GetSection("Logging"));
                 loggerFactory.AddDebug();
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
@@ -107,6 +95,12 @@ namespace AspNetCoreSpa
                     HotModuleReplacement = true,
                     ConfigFile = "config/webpack.config.js"
                 });
+
+                // NOTE: For SPA swagger needs adding before MVC
+                // Enable middleware to serve generated Swagger as a JSON endpoint
+                app.UseSwaggerGen();
+                // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
+                app.UseSwaggerUi();
 
             }
             else
@@ -123,7 +117,8 @@ namespace AspNetCoreSpa
 
             }
 
-            // Configure XSRF middleware            
+            // Configure XSRF middleware, This pattern is for SPA style applications where XSRF token is added on Index page 
+            // load and passed back token on every subsequent async request            
             app.Use(async (context, next) =>
             {
                 if (string.Equals(context.Request.Path.Value, "/", StringComparison.OrdinalIgnoreCase))
@@ -138,10 +133,6 @@ namespace AspNetCoreSpa
 
             app.UseIdentity();
 
-            //NOTE: For SPA swagger needs adding before MVC
-            //app.UseSwaggerGen();
-            //app.UseSwaggerUi();
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -152,6 +143,7 @@ namespace AspNetCoreSpa
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
             });
+
 
             await seedData.EnsureSeedDataAsync();
         }

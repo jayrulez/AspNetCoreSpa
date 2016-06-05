@@ -15,7 +15,7 @@ namespace AspNetCoreSpa.Server.Controllers.api
 {
     [Authorize]
     [Route("api/[controller]")]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -36,6 +36,7 @@ namespace AspNetCoreSpa.Server.Controllers.api
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
+
 
         [HttpPost("login")]
         [AllowAnonymous]
@@ -107,8 +108,6 @@ namespace AspNetCoreSpa.Server.Controllers.api
             return BadRequest(new string[] { "Unable to register" });
         }
 
-        //
-        // POST: /Account/LogOff
         [HttpPost("logout")]
         public async Task<IActionResult> LogOff()
         {
@@ -117,8 +116,6 @@ namespace AspNetCoreSpa.Server.Controllers.api
             return Ok();
         }
 
-        //
-        // POST: /Account/ExternalLogin
         [HttpPost]
         [AllowAnonymous]
         public IActionResult ExternalLogin(string provider, string returnUrl = null)
@@ -129,9 +126,7 @@ namespace AspNetCoreSpa.Server.Controllers.api
             return Challenge(properties, provider);
         }
 
-        //
-        // GET: /Account/ExternalLoginCallback
-        [HttpGet]
+        [HttpGet("ExternalLoginCallback")]
         [AllowAnonymous]
         public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)
         {
@@ -171,9 +166,7 @@ namespace AspNetCoreSpa.Server.Controllers.api
             }
         }
 
-        //
-        // POST: /Account/ExternalLoginConfirmation
-        [HttpPost]
+        [HttpPost("ExternalLoginConfirmation")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl = null)
@@ -205,8 +198,7 @@ namespace AspNetCoreSpa.Server.Controllers.api
             return View(model);
         }
 
-        // GET: /Account/ConfirmEmail
-        [HttpGet]
+        [HttpGet("ConfirmEmail")]
         [AllowAnonymous]
         public async Task<IActionResult> ConfirmEmail(string userId, string code)
         {
@@ -223,17 +215,13 @@ namespace AspNetCoreSpa.Server.Controllers.api
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
-        //
-        // GET: /Account/ForgotPassword
-        [HttpGet]
+        [HttpGet("ForgotPassword")]
         [AllowAnonymous]
         public IActionResult ForgotPassword()
         {
             return View();
         }
 
-        //
-        // POST: /Account/ForgotPassword
         [HttpPost("ForgotPassword")]
         [AllowAnonymous]
         public async Task<IActionResult> ForgotPassword([FromBody]ForgotPasswordViewModel model)
@@ -285,9 +273,7 @@ namespace AspNetCoreSpa.Server.Controllers.api
             return BadRequest(ModelState.GetModelErrors());
         }
 
-        //
-        // GET: /Account/SendCode
-        [HttpGet]
+        [HttpGet("SendCode")]
         [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl = null, bool rememberMe = false)
         {
@@ -301,8 +287,6 @@ namespace AspNetCoreSpa.Server.Controllers.api
             return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
-        //
-        // POST: /Account/SendCode
         [HttpPost("SendCode")]
         [AllowAnonymous]
         public async Task<IActionResult> SendCode([FromBody]SendCodeViewModel model)
@@ -339,9 +323,7 @@ namespace AspNetCoreSpa.Server.Controllers.api
             return RedirectToAction(nameof(VerifyCode), new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
 
-        //
-        // GET: /Account/VerifyCode
-        [HttpGet]
+        [HttpGet("VerifyCode")]
         [AllowAnonymous]
         public async Task<IActionResult> VerifyCode(string provider, bool rememberMe, string returnUrl = null)
         {
@@ -354,9 +336,7 @@ namespace AspNetCoreSpa.Server.Controllers.api
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
-        //
-        // POST: /Account/VerifyCode
-        [HttpPost]
+        [HttpPost("VerifyCode")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> VerifyCode(VerifyCodeViewModel model)

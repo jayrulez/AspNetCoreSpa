@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 namespace AspNetCoreSpa.Server.Controllers.api
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
