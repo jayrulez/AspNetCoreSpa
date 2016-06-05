@@ -22,14 +22,14 @@
 
 ## Features
     * AspNetCore RC2
-    * EFCore
-    * Angular 2 RC1 (Client side)
-    * Webpack (for client build)
-    * Hot Module replacement with webpack
+    * EF Core
+    * Angular 2 RC1
+    * Webpack with HMR (Hot Module Replacement) support
     * Client lazy loading using es6-promise loader
     * SASS support
+    * [Swagger](https://github.com/domaindrivendev/Ahoy) Api explorer
 
-## Few references
+## Few developer references
 ### 1. Find .net process id to attach to debugger (in command line)
      * wmic
      * process where caption="dotnet.exe" get ProcessId
