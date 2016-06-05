@@ -2,23 +2,18 @@
 
 using System.Linq;
 using System.Threading.Tasks;
-using AspNetCoreSpa.Server.Controllers.api;
 using AspNetCoreSpa.Server.Entities;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace AspNetCoreSpa.Server.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IHostingEnvironment _env;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public HomeController(IHostingEnvironment env, UserManager<ApplicationUser> userManager)
+        public HomeController(UserManager<ApplicationUser> userManager)
         {
-            _env = env;
             _userManager = userManager;
         }
 
@@ -49,9 +44,6 @@ namespace AspNetCoreSpa.Server.Controllers
                 ViewBag.user = userResult;
             }
 
-            ViewBag.stripeClientKey = Startup.Configuration["stripeClientKey"];
-
-            //var viewToRender = _env.IsDevelopment() ? "/Views/Home/index.cshtml" : "/Views/Home/index.cshtml";
             return View();
         }
 

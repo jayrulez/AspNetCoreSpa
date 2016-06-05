@@ -1,16 +1,13 @@
 using System;
-using System.IO;
 using System.Threading.Tasks;
 using AspNetCoreSpa.Server.Repositories.Abstract;
 using AspNetCoreSpa.Server.Services.Abstract;
-using Microsoft.Extensions.PlatformAbstractions;
 
 namespace AspNetCoreSpa.Server.Services
 {
     public class EmailSender : IEmailSender
     {
         private readonly ILoggingRepository _loggingRepository;
-        private readonly string _templatePath = @"" + (PlatformServices.Default.Application.ApplicationBasePath + Startup.Configuration["Sendgrid:emailTemplatesPath"]);
 
         public EmailSender(ILoggingRepository loggingRepository)
         {
@@ -27,10 +24,6 @@ namespace AspNetCoreSpa.Server.Services
             {
                 case MailType.Register:
                     return await SendRegisterEmailAsync(new EmailModel { To = emailModel.To }, extraData);
-                // case MailType.PaymentConfirmation:
-                //     return await SendPaymentEmailAsync(new EmailModel { To = emailModel.To });
-                // case MailType.None:
-                //     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
@@ -39,19 +32,11 @@ namespace AspNetCoreSpa.Server.Services
         private async Task<bool> SendRegisterEmailAsync(EmailModel emailModel, string extraData)
         {
             emailModel.Subject = "Registration confirmation";
-            var regTemplate = _templatePath + "register.html";
-            var content = File.ReadAllText(regTemplate);
-            content = content.Replace("{{ConfirmationEmail}}", extraData);
-            emailModel.HtmlBody = content;
+            emailModel.HtmlBody = extraData;
             emailModel.TextBody = extraData;
             return await Task.Run(() => true);
             //return await SendEmailAsync(emailModel);
         }
-
-        //     private bool SendPaymentEmailAsync(EmailModel emailModel)
-        //     {
-        //         return true;
-        //     }
 
         //     private bool SendEmailAsync(EmailModel model)
         //     {

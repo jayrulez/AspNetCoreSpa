@@ -28,7 +28,6 @@ namespace AspNetCoreSpa.Server.Entities
     public enum UserAuditEventType
     {
         Login = 1,
-        FailedLogin = 2,
-        LogOut = 3
+        FailedLogin = 2
     }
 }

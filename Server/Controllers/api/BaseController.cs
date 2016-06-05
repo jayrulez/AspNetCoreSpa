@@ -6,7 +6,6 @@ namespace AspNetCoreSpa.Server.Controllers.api
     [Authorize]
     public class BaseController : Controller
     {
-
         public BaseController()
         {
         }

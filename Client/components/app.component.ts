@@ -25,7 +25,7 @@ import { HeaderComponent, FooterComponent, RouterActive, DataService, ApiGateway
   { path: '/', name: 'Home', component: HomeComponent, useAsDefault: true },
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
   { path: '/about/...', name: 'About', loader: () => require('es6-promise!./+about')('AboutComponent') },
-  { path: '/admin/...', name: 'Admin', loader: () => require('es6-promise!./+admin')('AdminComponent') },
+  { path: '/admin', name: 'Admin', loader: () => require('es6-promise!./+admin')('AdminComponent') },
   { path: '/login', name: 'Login', loader: () => require('es6-promise!./+login')('LoginComponent') },
   { path: '/profile', name: 'Profile', loader: () => require('es6-promise!./+profile')('UserProfileComponent') },
   { path: '/register/...', name: 'RegisterContainer', loader: () => require('es6-promise!./+register')('RegisterContainerComponent') }

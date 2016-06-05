@@ -64,7 +64,6 @@ namespace AspNetCoreSpa
             services.AddScoped<ILoggingRepository, LoggingRepository>();
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<ISmsSender, SmsSender>();
-            services.AddScoped<IPaymentService, PaymentService>();
 
             services.AddTransient<SeedDbData>();
 

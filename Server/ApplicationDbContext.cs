@@ -7,16 +7,9 @@ namespace AspNetCoreSpa.Server
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Error> Errors { get; set; }
-        public DbSet<UserAudit> UserAuditEvents { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<SubCategory> SubCategories { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<Language> Languageses { get; set; }
         public DbSet<Content> Content { get; set; }
         public DbSet<ContentText> ContentText { get; set; }
-        public DbSet<PaymentTransaction> Payments { get; set; }
-
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -37,7 +30,6 @@ namespace AspNetCoreSpa.Server
                 .WithMany(b => b.ContentTexts)
                 .HasForeignKey(p => p.LanguageId)
                 .HasConstraintName("ForeignKey_ContentText_Language");
-            // Photos
 
             base.OnModelCreating(modelBuilder);
             // Customize the ASP.NET Identity model and override the defaults if needed.

@@ -38,11 +38,6 @@ namespace AspNetCoreSpa.Server.Controllers.api
                               Key = c.Key,
                               Value = t.Text
                           }).ToDictionary(x => x.Key, x => x.Value);
-            //var result = (from c in _context.Content ,
-            //               from t in _context.ContentText
-
-            //              where c.LanguageId == (from l in _context.Languageses where l.Locale == lang select l.Id).FirstOrDefault()
-            //              select c).ToDictionary(c => c.Key, c => c.Value);
 
             return Ok(result);
         }

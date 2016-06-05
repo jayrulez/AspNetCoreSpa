@@ -13,7 +13,6 @@ namespace AspNetCoreSpa.Server.Services.Abstract
     {
         None,
         Register,
-        PaymentConfirmation,
         SecurityCode,
         ForgetPassword
     }

@@ -1,28 +1,19 @@
 import { Component } from '@angular/core';
 import { RouteConfig } from '@angular/router-deprecated';
 
-import { AdminHome } from './admin-home.component';
-import { ProductsComponent } from './+products';
-import { CategoriesComponent } from './+categories';
+import { DataService } from '../shared';
 
 @Component({
     selector: 'sd-admin',
-    template: `
-            <a [routerLink]="['Admin']">
-                Home
-            </a>|
-            <a [routerLink]="['Categories']">
-                Categories
-            </a>|
-            <a [routerLink]="['Products']">
-                Products
-            </a>
-                <router-outlet></router-outlet>
-              `
+    template: require('./admin.component.html')
 })
-@RouteConfig([
-    { path: '/', name: 'AdminHome', component: AdminHome, useAsDefault: true },
-    { path: '/categories', name: 'Categories', component: CategoriesComponent },
-    { path: '/products', name: 'Products', component: ProductsComponent },
-])
-export class AdminComponent { }
+export class AdminComponent {
+    message: any;
+
+    constructor(private dataService: DataService) { }
+
+    doAdminOperation() {
+        this.dataService.get('api/admin/doadminoperation')
+            .subscribe(data => this.message = data);
+    }
+}
