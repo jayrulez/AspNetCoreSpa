@@ -18,19 +18,18 @@
     a. set ASPNETCORE_ENVIRONMENT=Development
     b. dotnet run
 6. Browse using http://localhost:5000
-7. For Swagger Api, navigate http://http://localhost:5000/swagger/ui
 ```
 
 ## Features
     * AspNetCore RC2
-    * EF Core
-    * Angular 2 RC1
-    * Webpack with HMR (Hot Module Replacement) support
+    * EFCore
+    * Angular 2 RC1 (Client side)
+    * Webpack (for client build)
+    * Hot Module replacement with webpack
     * Client lazy loading using es6-promise loader
     * SASS support
-    * [Swagger](https://github.com/domaindrivendev/Ahoy) Api explorer
 
-## Few developer references
+## Few references
 ### 1. Find .net process id to attach to debugger (in command line)
      * wmic
      * process where caption="dotnet.exe" get ProcessId
@@ -47,3 +46,6 @@
 ### 3. Webpack stats analyser
     * webpack --config config/webpack.config.js --profile --json > stats.json
     * then feed stats.json file into "https://webpack.github.io/analyse/"
+ 
+# Credit with :heart:
+Unstoppable credit to open-source community and all the people who have contributed towards the technologies used in this application.
