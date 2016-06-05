@@ -18,6 +18,7 @@
     a. set ASPNETCORE_ENVIRONMENT=Development
     b. dotnet run
 6. Browse using http://localhost:5000
+7. For Swagger Api, navigate http://http://localhost:5000/swagger/ui
 ```
 
 ## Features
