@@ -12,6 +12,8 @@
 * [HMR](https://webpack.github.io/docs/hot-module-replacement.html) (Hot Module Replacement) with Webpack
 * [Typedoc](http://typedoc.io/) for typescript documentation
 * [Server](https://github.com/aspnet/dotnet-watch) and [client](https://webpack.github.io/docs/hot-module-replacement.html) watches
+* Login and Registration functionality using [Asp.Net Identity](https://docs.asp.net/en/latest/security/authentication/identity.html)
+* An example of Angular 2 child routes (About page has two child routes)
 * More coming....
 
 ## Pre-requisites
@@ -30,15 +32,15 @@
 3. dotnet restore
 4. Install global dependencies
     npm install typings rimraf webpack -g
-4. npm install
-5. typings install
-6. Create webpack vendor manifest file for fast webpack rebuils
+5. npm install
+6. typings install
+7. Create webpack vendor manifest file for fast webpack rebuils
     webpack --config config/webpack.config.vendor.js
-6. Set appropriate environment 
+8. Set appropriate environment 
     set ASPNETCORE_ENVIRONMENT=Development
-7. Run the app 
+9. Run the app 
     dotnet run (for single run) OR dotnet watch (in watch mode)
-6. Browse using http://localhost:5000
+10. Browse using http://localhost:5000
 ```
 
 
