@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ErrorSummaryComponent {
     @Input() errors: string | string[];
-   
+
     constructor() { }
 }

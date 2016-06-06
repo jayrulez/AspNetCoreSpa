@@ -28,24 +28,3 @@
     * Hot Module replacement with webpack
     * Client lazy loading using es6-promise loader
     * SASS support
-
-## Few references
-### 1. Find .net process id to attach to debugger (in command line)
-     * wmic
-     * process where caption="dotnet.exe" get ProcessId
-
-### 2. Upgrade from tsd to typings
-    * npm uninstall tsd
-    * rm -rf typings
-    * npm install typings
-    * typings init --upgrade
-    * rm tsd.json
-    * typings install
-    * Add typings/main and typings/main.d.ts in tsconfig.json's exclude section to avoid duplicate identifiers during compilation
-    
-### 3. Webpack stats analyser
-    * webpack --config config/webpack.config.js --profile --json > stats.json
-    * then feed stats.json file into "https://webpack.github.io/analyse/"
- 
-# Credit with :heart:
-Unstoppable credit to open-source community and all the people who have contributed towards the technologies used in this application.

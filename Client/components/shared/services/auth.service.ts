@@ -15,7 +15,7 @@ export class AuthService {
     }
 
     isLoggedIn(): boolean {
-        return this.user(null) !== undefined;
+        return this.user(undefined) !== undefined;
     }
 
     user(user: User): User {
@@ -26,14 +26,12 @@ export class AuthService {
         if (userData) {
             user = new User(userData.displayName, userData.roles);
         }
-        return user ? user : undefined;;
+        return user ? user : undefined;
     }
 
     setAuth(res: any): void {
         if (res && res.user) {
             sessionStorage.setItem('user', JSON.stringify(res.user));
-            // TODO: set auth token when converted to JWT
-            //sessionStorage.setItem('accessToken', JSON.stringify(res.accessToken));
         }
     }
 }

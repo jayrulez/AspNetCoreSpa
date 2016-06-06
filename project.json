@@ -92,6 +92,11 @@
   "buildOptions": {
     "emitEntryPoint": true,
     "preserveCompilationContext": true,
+    "compile": {
+      "exclude": [
+        "**/node_modules/"
+      ]
+    },
     "debugType": "portable"
   },
   "runtimeOptions": {

@@ -9,7 +9,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('hello `Home` component1234567');
+    console.log('hello `Home` component');
   }
 
 }

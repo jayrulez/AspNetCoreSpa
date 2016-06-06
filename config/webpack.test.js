@@ -66,11 +66,11 @@ module.exports = {
        *
        * See: https://github.com/wbuchwalter/tslint-loader
        */
-      {
-        test: /\.ts$/,
-        loader: 'tslint-loader',
-        exclude: [helpers.root('node_modules')]
-      },
+      // {
+      //   test: /\.ts$/,
+      //   loader: 'tslint-loader',
+      //   exclude: [helpers.root('node_modules')]
+      // },
 
       /**
        * Source map loader support for *.js files
@@ -82,10 +82,11 @@ module.exports = {
         test: /\.js$/,
         loader: 'source-map-loader',
         exclude: [
-        // these packages have problems with their sourcemaps
-        helpers.root('node_modules/rxjs'),
-        helpers.root('node_modules/@angular')
-      ]}
+          // these packages have problems with their sourcemaps
+          helpers.root('node_modules/rxjs'),
+          helpers.root('node_modules/@angular')
+        ]
+      }
 
     ],
 
@@ -133,7 +134,7 @@ module.exports = {
        * See: https://github.com/webpack/raw-loader
        */
       { test: /\.css$/, loader: 'raw-loader', exclude: [helpers.root('Client/index.html')] },
-
+      { test: /\.scss$/, loaders: ['raw-loader', 'sass-loader?sourceMap'] },
       /**
        * Raw loader support for *.html
        * Returns file content as string

@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router-deprecated';
 
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services';
 
 @Component({
     selector: 'sd-header',
