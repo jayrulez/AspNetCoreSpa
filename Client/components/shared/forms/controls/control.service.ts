@@ -1,8 +1,8 @@
 import { Injectable }       from '@angular/core';
 
-import { ControlBase }     from './control-base';
-import { ControlTextbox }  from './control-textbox';
-import { ControlDropdown } from './control-dropdown';
+import { ControlBase }     from './';
+import { ControlTextbox }  from './';
+import { ControlDropdown } from './';
 
 @Injectable()
 export class FormControlServiceExample {

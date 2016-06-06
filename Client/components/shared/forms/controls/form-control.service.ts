@@ -1,7 +1,7 @@
 import { Injectable }   from '@angular/core';
 import { FormBuilder, Validators } from '@angular/common';
 
-import { ControlBase } from './control-base';
+import { ControlBase } from './';
 
 @Injectable()
 export class FormControlService {

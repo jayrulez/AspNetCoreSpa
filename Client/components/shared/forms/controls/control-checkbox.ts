@@ -1,4 +1,4 @@
-import { ControlBase } from './control-base';
+import { ControlBase } from './';
 
 export class ControlCheckbox extends ControlBase<string> {
     controlType = 'checkbox';
