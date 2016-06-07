@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
                 key: 'rememberMe',
                 label: 'Remember me?',
                 value: false,
+                class: 'rememberme',
                 order: 3
             })
         ];

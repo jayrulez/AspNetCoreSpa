@@ -1,5 +1,6 @@
 @import '../_variables.scss';
 
+
 a {
     font-size: 20px;
     margin: 10px;
@@ -9,4 +10,8 @@ a {
 
 .router-link-active {
     background-color: lightblue;
+}
+
+div.nav {
+    margin: 40px 10px;
 }

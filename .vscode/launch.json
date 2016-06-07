@@ -10,6 +10,9 @@
             "args": [],
             "cwd": "${workspaceRoot}",
             "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
             "launchBrowser": {
                 "enabled": true,
                 "args": "${auto-detect-url}",

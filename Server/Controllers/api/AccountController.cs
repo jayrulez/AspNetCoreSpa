@@ -105,7 +105,7 @@ namespace AspNetCoreSpa.Server.Controllers.api
             }
 
             // If we got this far, something failed, redisplay form
-            return BadRequest(new string[] { "Unable to register" });
+            return BadRequest(ModelState.GetModelErrors());
         }
 
         [HttpPost("logout")]

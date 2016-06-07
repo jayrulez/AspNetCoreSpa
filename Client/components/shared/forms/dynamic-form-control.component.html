@@ -1,4 +1,4 @@
-<div [ngFormModel]="form" [ngSwitch]="control.controlType" class="form-group">
+<div [ngFormModel]="form" [ngSwitch]="control.controlType" class="form-group {{control.class}}">
     <label [attr.for]="control.key" class="col-lg-2 control-label">{{control.label}}</label>
 
     <div class="col-lg-10">
